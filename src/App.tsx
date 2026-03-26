@@ -14,7 +14,8 @@ import {
   X,
   ChevronRight,
   Mail,
-  Globe
+  Globe,
+  Phone
 } from "lucide-react";
 import { useState, useRef } from "react";
 
@@ -47,31 +48,151 @@ const GALLERY_IMAGES = [
     url: "https://images.unsplash.com/photo-1598305322298-2938de39946f?auto=format&fit=crop&q=80&w=1000",
     title: "Niagara of Kashmir",
     location: "Aharbal, Kashmir",
-    category: "Mountains"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1000",
-    title: "The Silent Peak",
-    location: "Himalayas",
-    category: "Mountains"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80&w=1000",
-    title: "Wildflower Valley",
-    location: "Dolomites",
-    category: "Fields"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1433086566045-f701638061ee?auto=format&fit=crop&q=80&w=1000",
-    title: "Hidden Falls",
-    location: "Iceland",
     category: "Water"
   },
   {
-    url: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=1000",
-    title: "Ancient Spirits",
-    location: "Redwood Forest",
+    url: "https://images.unsplash.com/photo-1544833095-196c5f248c67?auto=format&fit=crop&q=80&w=1000",
+    title: "The Pristine Vishansar",
+    location: "Vishansar Lake, Kashmir",
+    category: "Water"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1000",
+    title: "Gangabal Majesty",
+    location: "Gangabal Lake, Kashmir",
+    category: "Water"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1000",
+    title: "Tarsar Serenity",
+    location: "Tarsar Lake, Kashmir",
+    category: "Water"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1433086566045-f701638061ee?auto=format&fit=crop&q=80&w=1000",
+    title: "Gadsar - Lake of Flowers",
+    location: "Gadsar Lake, Kashmir",
+    category: "Water"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1000",
+    title: "Noori Chamb Falls",
+    location: "Noori Chamb, Kashmir",
+    category: "Water"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=1000",
+    title: "Drung Icy Falls",
+    location: "Drung, Kashmir",
+    category: "Water"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=1000",
+    title: "Source of Jhelum",
+    location: "Verinag Spring, Kashmir",
+    category: "Water"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1439853949127-fa647821eba0?auto=format&fit=crop&q=80&w=1000",
+    title: "Alpather Frozen Lake",
+    location: "Alpather Lake, Kashmir",
+    category: "Water"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1599666505327-7758b44a9985?auto=format&fit=crop&q=80&w=1000",
+    title: "Dachigam Wilderness",
+    location: "Dachigam National Park, Kashmir",
     category: "Forest"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&q=80&w=1000",
+    title: "Overa-Aru Woods",
+    location: "Overa-Aru Wildlife Sanctuary, Kashmir",
+    category: "Forest"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80&w=1000",
+    title: "Gulmarg Pine Forest",
+    location: "Gulmarg Wildlife Sanctuary, Kashmir",
+    category: "Forest"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=1000",
+    title: "Hirpora Highlands",
+    location: "Hirpora Wildlife Sanctuary, Kashmir",
+    category: "Forest"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1000",
+    title: "Kishtwar Alpine Forest",
+    location: "Kishtwar National Park, Kashmir",
+    category: "Forest"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1000",
+    title: "Kazinag Wilderness",
+    location: "Kazinag National Park, Kashmir",
+    category: "Forest"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1501854140801-50d01674db4e?auto=format&fit=crop&q=80&w=1000",
+    title: "Baltal Forest Range",
+    location: "Baltal-Amarnath Wildlife Sanctuary, Kashmir",
+    category: "Forest"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=1000",
+    title: "Langate Greenery",
+    location: "Langate Forest Range, Kashmir",
+    category: "Forest"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=1000",
+    title: "Pir Panjal Pines",
+    location: "Pir Panjal Forest Range, Kashmir",
+    category: "Forest"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1505242844904-26d8496476af?auto=format&fit=crop&q=80&w=1000",
+    title: "Sindh Valley Woods",
+    location: "Sindh Forest Range, Kashmir",
+    category: "Forest"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&q=80&w=1000",
+    title: "Golden Mustard Carpets",
+    location: "Pulwama, Kashmir",
+    category: "Fields"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80&w=1000",
+    title: "The Land of Love",
+    location: "Lolab Valley, Kashmir",
+    category: "Fields"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1000",
+    title: "Hidden Bangus",
+    location: "Bangus Valley, Kashmir",
+    category: "Fields"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=1000",
+    title: "Gateway to Dardistan",
+    location: "Gurez Valley, Kashmir",
+    category: "Fields"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=1000",
+    title: "Saffron Capital",
+    location: "Pampore, Kashmir",
+    category: "Fields"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=1000",
+    title: "Meadow of Jesus",
+    location: "Yusmarg, Kashmir",
+    category: "Fields"
   }
 ];
 
@@ -112,11 +233,67 @@ const LOCATION_DETAILS: Record<string, { description: string; places: { name: st
     ]
   },
   "Aharbal, Kashmir": {
-    description: "Famous for the Aharbal Waterfall, often called the 'Niagara Falls of Kashmir', it's a serene spot for nature lovers.",
+    description: "Famous for the Aharbal Waterfall, often called the 'Niagara Falls of Kashmir', it's a serene spot for nature lovers and adventure seekers.",
     places: [
       { name: "Aharbal Waterfall", desc: "A powerful waterfall formed by the Veshu River falling 25 meters over basalt rocks." },
       { name: "Kungwattan", desc: "A beautiful meadow located a short trek away from the waterfall, ideal for camping." },
       { name: "Kousar Nag Lake", desc: "A large, high-altitude oligotrophic lake surrounded by snow-clad peaks." }
+    ]
+  },
+  "Vishansar Lake, Kashmir": {
+    description: "The 'Lake of Vishnu', this high-altitude oligotrophic lake is known for its pristine blue waters and is home to several species of trout.",
+    places: [
+      { name: "Krishansar Lake", desc: "Located just a short distance from Vishansar, it is equally beautiful and surrounded by lush meadows." },
+      { name: "Nichnai Pass", desc: "A high mountain pass that offers breathtaking views of the Vishansar and Krishansar lakes." }
+    ]
+  },
+  "Gangabal Lake, Kashmir": {
+    description: "Situated at the foothills of Mount Harmukh, Gangabal is one of the largest alpine lakes in Kashmir and holds great spiritual significance.",
+    places: [
+      { name: "Nundkol Lake", desc: "A smaller lake located nearby, offering a stunning reflection of Mount Harmukh." },
+      { name: "Mount Harmukh", desc: "The majestic peak that towers over the Gangabal lake, a challenge for trekkers and climbers." }
+    ]
+  },
+  "Tarsar Lake, Kashmir": {
+    description: "An almond-shaped alpine lake known for its turquoise waters and the surrounding meadows of wildflowers.",
+    places: [
+      { name: "Marsar Lake", desc: "The twin lake of Tarsar, often hidden in clouds and separated by a mountain ridge." },
+      { name: "Lidderwat", desc: "A scenic meadow that serves as a base camp for the trek to Tarsar and Marsar lakes." }
+    ]
+  },
+  "Gadsar Lake, Kashmir": {
+    description: "Known as the 'Lake of Flowers', Gadsar is famous for the variety of wildflowers that bloom on its shores during summer.",
+    places: [
+      { name: "Gadsar Pass", desc: "The highest point of the Great Lakes Trek, offering a panoramic view of the surrounding peaks." },
+      { name: "Yamsar Lake", desc: "A small, serene lake located in the vicinity of Gadsar." }
+    ]
+  },
+  "Noori Chamb, Kashmir": {
+    description: "A historic waterfall named after Queen Nur Jahan, who used to bathe here during her travels to Kashmir.",
+    places: [
+      { name: "Poonch River", desc: "The river that feeds the waterfall, offering scenic views along its banks." },
+      { name: "Peer Ki Gali", desc: "A nearby mountain pass that offers a gateway to the beautiful Poonch valley." }
+    ]
+  },
+  "Drung, Kashmir": {
+    description: "Famous for its waterfall that freezes completely during winter, creating a magical ice structure.",
+    places: [
+      { name: "Drung Waterfall", desc: "A spectacular waterfall that is a sight to behold in both summer and winter." },
+      { name: "Tangmarg", desc: "A nearby town that serves as a gateway to Gulmarg and offers beautiful forest views." }
+    ]
+  },
+  "Verinag Spring, Kashmir": {
+    description: "The official source of the Jhelum River, featuring a deep blue octagonal spring built by Emperor Jahangir.",
+    places: [
+      { name: "Mughal Garden Verinag", desc: "A beautifully landscaped garden surrounding the spring, reflecting Mughal architecture." },
+      { name: "Banihal Pass", desc: "A nearby mountain pass that connects the Kashmir Valley with the Jammu region." }
+    ]
+  },
+  "Alpather Lake, Kashmir": {
+    description: "A high-altitude lake located at the foot of the Apharwat Peaks, it remains frozen for most of the year.",
+    places: [
+      { name: "Apharwat Peak", desc: "The majestic peak that overlooks the lake, accessible via the Gulmarg Gondola." },
+      { name: "Khilanmarg", desc: "A beautiful meadow located on the way to the lake, offering panoramic views." }
     ]
   },
   "Himalayas": {
@@ -125,6 +302,119 @@ const LOCATION_DETAILS: Record<string, { description: string; places: { name: st
       { name: "Everest Base Camp", desc: "The legendary starting point for climbers attempting to summit the world's highest peak." },
       { name: "Leh-Ladakh", desc: "A high-altitude desert known for its Buddhist monasteries and dramatic landscapes." },
       { name: "Spiti Valley", desc: "A cold desert mountain valley located high in the Himalayas." }
+    ]
+  },
+  "Dachigam National Park, Kashmir": {
+    description: "Located near Srinagar, Dachigam is the last home of the Hangul (Kashmir Stag) and is known for its diverse flora and fauna across varying altitudes.",
+    places: [
+      { name: "Lower Dachigam", desc: "Home to the Hangul stag and diverse bird species in a riverine forest setting." },
+      { name: "Marsar Lake", desc: "A high-altitude lake located in the upper reaches of the park." },
+      { name: "Dagwan River", desc: "A pristine river flowing through the park, essential for the local ecosystem." }
+    ]
+  },
+  "Overa-Aru Wildlife Sanctuary, Kashmir": {
+    description: "Situated near Pahalgam, this sanctuary is famous for its diverse birdlife and rare mammals like the Musk Deer and Leopard.",
+    places: [
+      { name: "Lidder Valley", desc: "A beautiful valley within the sanctuary offering stunning views and trekking paths." },
+      { name: "Aru Biosphere", desc: "A protected area known for its rich biodiversity and scenic beauty." }
+    ]
+  },
+  "Gulmarg Wildlife Sanctuary, Kashmir": {
+    description: "Surrounding the famous Gulmarg resort, this sanctuary features dense coniferous forests and is a habitat for the Himalayan Brown Bear.",
+    places: [
+      { name: "Ningle Nallah", desc: "A beautiful mountain stream flowing through dense pine forests." },
+      { name: "Ferozepur Nallah", desc: "A scenic spot popular for trout fishing and nature walks." }
+    ]
+  },
+  "Hirpora Wildlife Sanctuary, Kashmir": {
+    description: "Located in Shopian, this sanctuary is a vital corridor for the Markhor and features diverse forest types from deciduous to alpine.",
+    places: [
+      { name: "Mughal Road", desc: "A historic road passing through the sanctuary, offering breathtaking views." },
+      { name: "Peer Ki Gali", desc: "A high mountain pass within the sanctuary known for its spiritual and natural significance." }
+    ]
+  },
+  "Kishtwar National Park, Kashmir": {
+    description: "A high-altitude park known for its rugged terrain, glaciers, and rare species like the Snow Leopard and Himalayan Black Bear.",
+    places: [
+      { name: "Marwah Valley", desc: "A remote and beautiful valley known for its unique culture and natural beauty." },
+      { name: "Warwan Valley", desc: "A stunning valley offering some of the most challenging and rewarding treks in Kashmir." }
+    ]
+  },
+  "Kazinag National Park, Kashmir": {
+    description: "Located in the Baramulla district, it is famous for being a prime habitat of the Markhor and is characterized by its sub-alpine and alpine forests.",
+    places: [
+      { name: "Lachipora", desc: "A scenic area within the park known for its dense forests and wildlife sightings." },
+      { name: "Limber", desc: "Another vital part of the park featuring diverse flora and a peaceful environment." }
+    ]
+  },
+  "Baltal-Amarnath Wildlife Sanctuary, Kashmir": {
+    description: "This sanctuary encompasses the famous Baltal valley and serves as a critical habitat for high-altitude wildlife along the Amarnath pilgrimage route.",
+    places: [
+      { name: "Baltal Valley", desc: "A picturesque valley that serves as a base camp for pilgrims and a haven for nature enthusiasts." },
+      { name: "Amarnath Cave Area", desc: "The high-altitude region surrounding the holy cave, featuring unique alpine vegetation." }
+    ]
+  },
+  "Langate Forest Range, Kashmir": {
+    description: "A vital forest division in North Kashmir known for its extensive deodar and pine forests, contributing significantly to the region's biodiversity.",
+    places: [
+      { name: "Mawar Valley", desc: "A beautiful valley within the range known for its lush greenery and serene atmosphere." },
+      { name: "Langate Woods", desc: "Dense forests offering a peaceful retreat and a glimpse into the region's rich flora." }
+    ]
+  },
+  "Pir Panjal Forest Range, Kashmir": {
+    description: "Stretching across the Pir Panjal mountain range, these forests are home to diverse species and offer some of the most scenic trekking routes in Kashmir.",
+    places: [
+      { name: "Yusmarg", desc: "A beautiful meadow surrounded by dense forests, often called the 'Meadow of Jesus'." },
+      { name: "Doodhpathri", desc: "A scenic spot known for its lush green meadows and a river that looks like milk." }
+    ]
+  },
+  "Sindh Forest Range, Kashmir": {
+    description: "Located along the Sindh River, this range features a mix of riverine and coniferous forests, providing a unique habitat for various wildlife.",
+    places: [
+      { name: "Kangan", desc: "A picturesque town serving as a gateway to the Sindh Valley and its beautiful forests." },
+      { name: "Ganderbal Woods", desc: "Scenic forests offering a blend of natural beauty and tranquility." }
+    ]
+  },
+  "Pulwama, Kashmir": {
+    description: "Known for its vast mustard fields that turn the landscape into a sea of gold during spring, Pulwama is a sight to behold.",
+    places: [
+      { name: "Mustard Fields", desc: "Expansive fields of yellow mustard flowers that create a stunning visual contrast with the blue sky." },
+      { name: "Shikargah", desc: "A beautiful wildlife sanctuary and a popular picnic spot known for its lush greenery." }
+    ]
+  },
+  "Lolab Valley, Kashmir": {
+    description: "Often called the 'Land of Love and Beauty', Lolab is a pristine valley in North Kashmir known for its fruit orchards and green meadows.",
+    places: [
+      { name: "Kalaroos Caves", desc: "Ancient caves that are believed to have a secret route to Russia, surrounded by beautiful forests." },
+      { name: "Chandigam", desc: "A scenic village in the valley known for its beautiful landscapes and peaceful environment." }
+    ]
+  },
+  "Bangus Valley, Kashmir": {
+    description: "A hidden gem in North Kashmir, Bangus is a vast meadow surrounded by mountains, offering a serene and untouched natural beauty.",
+    places: [
+      { name: "Bada Bangus", desc: "The larger of the two meadows, known for its expansive grasslands and diverse flora." },
+      { name: "Chota Bangus", desc: "A smaller, equally beautiful meadow offering a peaceful retreat for nature lovers." }
+    ]
+  },
+  "Gurez Valley, Kashmir": {
+    description: "A remote and beautiful valley located high in the Himalayas, known for its unique culture, wooden houses, and the Kishanganga River.",
+    places: [
+      { name: "Habba Khatoon Peak", desc: "A majestic pyramid-shaped peak named after the famous Kashmiri poetess." },
+      { name: "Kishanganga River", desc: "A pristine river that flows through the valley, offering opportunities for trout fishing and rafting." }
+    ]
+  },
+  "Pampore, Kashmir": {
+    description: "The saffron capital of India, Pampore is famous for its vast saffron fields that bloom in late autumn, creating a purple carpet.",
+    places: [
+      { name: "Saffron Fields", desc: "The iconic fields where the world's most expensive spice is grown and harvested." },
+      { name: "Jhelum River Banks", desc: "The scenic banks of the Jhelum river that offer beautiful views of the surrounding fields." }
+    ]
+  },
+  "Yusmarg, Kashmir": {
+    description: "Often called the 'Meadow of Jesus', Yusmarg is a beautiful meadow surrounded by dense pine forests and snow-capped peaks.",
+    places: [
+      { name: "Doodhganga River", desc: "A beautiful river that flows through the meadow, known for its milky white water." },
+      { name: "Nilnag Lake", desc: "A serene high-altitude lake surrounded by dense forests, located a short trek away from Yusmarg." }
     ]
   }
 };
@@ -376,7 +666,7 @@ export default function App() {
             </div>
             <div className="mt-12 grid grid-cols-2 gap-8">
               <div>
-                <p className="text-3xl font-serif text-white mb-1">50k+</p>
+                <p className="text-3xl font-serif text-white mb-1">750</p>
                 <p className="text-sm text-white/40 uppercase tracking-widest">Followers</p>
               </div>
               <div>
@@ -436,16 +726,16 @@ export default function App() {
                   </div>
                   <div>
                     <p className="text-xs font-bold text-landscape-dark/40 uppercase tracking-widest">Email</p>
-                    <p className="font-medium">hello@untoldlandscape.com</p>
+                    <p className="font-medium">SHEIKHUXI57@GMAIL.COM</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-landscape-dark/5 rounded-full flex items-center justify-center text-landscape-dark">
-                    <Globe size={20} />
+                    <Phone size={20} />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-landscape-dark/40 uppercase tracking-widest">Location</p>
-                    <p className="font-medium">Global Expeditions</p>
+                    <p className="text-xs font-bold text-landscape-dark/40 uppercase tracking-widest">Phone</p>
+                    <p className="font-medium">+91 70064 03947</p>
                   </div>
                 </div>
               </div>
